@@ -17,41 +17,49 @@ class ControllerBase
     @already_built_response
   end
 
-  def redirect_to(url)
-    raise 'Double render all the way across the sky! What does it mean?' if already_built_response?
-    @res.set_header('Location', url)
-    @res.status = 302
-    session.store_session(@res)
-    @already_built_response = true
+  def invoke_action(name)
+    self.send(name)
+    render(name) unless already_built_response?
   end
 
-  def render_content(content, content_type)
-    raise 'Double render all the way across the sky! What does it mean?' if already_built_response?
-    @res['Content-Type'] = content_type
-    @res.write(content)
-    session.store_session(@res)
+  def prevent_double_render
+    raise 'Response already rendered!' if already_built_response?
+  end
+
+  def redirect_to(url)
+    prevent_double_render
+
+    @res.status = 302
+    @res['Location'] = url
     @already_built_response = true
+    session.store_session(@res)
+
+    nil
   end
 
   def render(template_name)
-    raise 'Double render all the way across the sky! What does it mean?' if already_built_response?
+    prevent_double_render
+
     path = "views/#{self.class.name.underscore}/#{template_name}.html.erb"
     file = File.read(path)
     erb = ERB.new(file).result(binding)
+
     render_content(erb, 'text/html')
     @already_built_response = true
   end
 
+  def render_content(content, content_type)
+    prevent_double_render
+
+    @res.write(content)
+    @res['Content-Type'] = content_type
+    @already_built_response = true
+    session.store_session(@res)
+
+    nil
+  end
+
   def session
     @session ||= Session.new(req)
-  end
-
-  def show
-    @cat = Cat.find(params[:id])
-  end
-
-  def invoke_action(name)
-    self.send(name)
-    render(name) unless already_built_response?
   end
 end
