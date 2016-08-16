@@ -8,7 +8,7 @@ class Route
     @action_name = action_name
   end
 
-  def matches?(req)
+  def matches_request?(req)
     (pattern =~ req.path) && (http_method == req.request_method.downcase.to_sym)
   end
 

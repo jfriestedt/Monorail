@@ -9,7 +9,7 @@ class Router
 
   def add_route(pattern, method, controller_class, action_name)
     route = Route.new(pattern, method, controller_class, action_name)
-    @routes.push(route)
+    @routes << route
   end
 
   def draw(&proc)
@@ -23,13 +23,12 @@ class Router
   end
 
   def match_req_to_route(req)
-    @routes.each { |route| return route if route.matches?(req) }
-
-    nil
+    @routes.find { |route| route.matches_request?(req) }
   end
 
   def run(req, res)
     route = match_req_to_route(req)
+
     if route
       route.run(req, res)
     else
