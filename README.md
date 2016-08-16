@@ -2,7 +2,7 @@
 Monorail is a lightweight MVC framework inspired by Rails.
 
 ## Features
-Monorail provides you with a Rack server, session cookies, a base controller, and a router to direct HTTP requests, without the bloat and scaffolding of a full-scale Rails project.
+Monorail provides you with session cookies, a base controller, ERB views, and a router to direct HTTP requests, without the bloat and scaffolding of a full-scale Rails project.
 
 ## Getting Started
 To start a Monorail project, simply clone this repo locally.
@@ -19,11 +19,37 @@ class MyController < ControllerBase
 end
 ```
 
-## Adding routes
-```
-add_route(pattern, method, controller_class, action_name)
+## Constructing routes
+
+Construct routes by passing a regex, controller name, and action symbol to ``Router.draw``
+```ruby
+# config/routes.rb
+
+Router.draw do
+  get Regexp.new("^/posts$"), PostsController, :index
+  get Regexp.new("^/posts/new$"), PostsController, :new
+  post Regexp.new("^/posts$"), PostsController, :create
+  get Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :show
+  get Regexp.new("^/posts/(?<id>\\d+)/edit$"), PostsController, :edit
+  patch Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :update
+  delete Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :destroy
+end
 ```
 
+## Creating ERB Views
+
+Add ERB views to ``app/views/``
+
+```html
+<!-- app/views/posts/show.html.erb -->
+
+<h1><%= @post.title %></h1>
+<h3>by <%= @post.author %></h3>
+
+<br />
+
+<p><%= @post.body %></p>
+```
 
 ## Technologies
 * Ruby
