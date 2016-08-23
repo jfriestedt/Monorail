@@ -2,7 +2,7 @@
 Monorail is a lightweight MVC framework inspired by Rails.
 
 ## Features
-Monorail provides you with session cookies, a base controller, ERB views, and a router to direct HTTP requests, without the bloat and scaffolding of a full-scale Rails project.
+Monorail provides you with session cookies, a base controller, ERB views, and a router to direct HTTP requests
 
 ## Getting Started
 To start a Monorail project, simply clone this repo locally.
