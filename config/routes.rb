@@ -2,9 +2,11 @@ require ('../lib/router.rb')
 
 # Router#draw example:
 
-# MyRouter = Router.new
+MyRouter = Router.new
 
-# MyRouter.draw do
+MyRouter.draw do
+# Draw routes according to this example:
+
 #   get Regexp.new("^/posts$"), PostsController, :index
 #   get Regexp.new("^/posts/new$"), PostsController, :new
 #   post Regexp.new("^/posts$"), PostsController, :create
@@ -12,4 +14,4 @@ require ('../lib/router.rb')
 #   get Regexp.new("^/posts/(?<id>\\d+)/edit$"), PostsController, :edit
 #   patch Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :update
 #   delete Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :destroy
-# end
+end
