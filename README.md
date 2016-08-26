@@ -8,8 +8,7 @@ Monorail provides you with session cookies, a base controller, ERB views, and a 
 1. Clone this repo and use `cd` to navigate to it
 2. Run `bundle install`
 3. Start a server
-4. Follow the instructions below to add Controllers, Routes, Views, and Models
-To start a Monorail project, simply clone this repo locally.
+4. Follow the instructions below to add Controllers, Routes, Views, and Models.
 
 ## Adding controllers
 Controllers should be added to ``app/controllers`` and must inherit from ``lib/controller_base.rb``
