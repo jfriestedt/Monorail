@@ -1,6 +1,9 @@
 require_relative ('../lib/router.rb')
 
-# Router#draw example:
+# require controllers here:
+
+# e.g:
+# require_relative('../app/controllers/posts_controller.rb')
 
 MyRouter = Monorail::Router.new
 

@@ -2,12 +2,14 @@
 Monorail is a lightweight MVC framework inspired by Rails.
 
 ## Features
-Monorail provides you with session cookies, a base controller, ERB views, and a router to direct HTTP requests
+Monorail provides you with session cookies, a base controller, ERB views, and a router to direct HTTP requests.
+
+After starting a server, you'll be able to create routes and controllers to field your HTTP requests. Controllers will use their inherited base controller functionality to field your requests and construct a response according to your views, and the response will be returned to your browser!
 
 ## Getting Started
 1. Clone this repo and use `cd` to navigate to it
 2. Run `bundle install`
-3. Start a server
+3. Start a server by running `ruby bin/server.rb`
 4. Follow the instructions below to add Controllers, Routes, and Views.
 
 ## Adding controllers
@@ -23,6 +25,12 @@ end
 ```
 
 ## Constructing routes
+
+Require your controllers at the top of `config/routes.rb`.
+
+```ruby
+require_relative ('../app/controllers/posts_controller.rb')
+```
 
 Construct routes by passing a regex, controller name, and action symbol to ``Router.draw``
 ```ruby
@@ -41,17 +49,24 @@ end
 
 ## Creating ERB Views
 
-Add ERB views to ``app/views/``
+Add ERB views to ``app/views/``.
+
+NB: You must name your views as `<resource_name>_controller/<template_name>.html.erb` for them to be recognized by your controllers.
 
 ```html
-<!-- app/views/posts/show.html.erb -->
+<!-- app/views/posts_controller/index.html.erb -->
 
-<h1><%= @post.title %></h1>
-<h3>by <%= @post.author %></h3>
-
-<br />
-
-<p><%= @post.body %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>All Posts</h1>
+    <!-- ... -->
+  </body>
+</html>
 ```
 
 ## Technologies
