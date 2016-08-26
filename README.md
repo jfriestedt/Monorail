@@ -12,7 +12,7 @@ After starting a server, you'll be able to create routes and controllers to fiel
 3. Start a server by running `ruby bin/server.rb`
 4. Follow the instructions below to add Controllers, Routes, and Views.
 
-## Adding controllers
+## Adding Controllers
 Controllers should be added to ``app/controllers`` and must inherit from ``lib/controller_base.rb``
 
 ```ruby
@@ -24,7 +24,7 @@ class MyController < ControllerBase
 end
 ```
 
-## Constructing routes
+## Constructing Routes
 
 Require your controllers at the top of `config/routes.rb`.
 
@@ -47,7 +47,7 @@ MyRouter.draw do
 end
 ```
 
-## Creating ERB Views
+## Creating ERB views
 
 Add ERB views to ``app/views/``.
 
