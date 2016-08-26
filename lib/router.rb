@@ -1,6 +1,7 @@
 require_relative ('./route')
 
-Module Monorail
+module Monorail
+
   class Router
     attr_reader :routes
 
@@ -37,5 +38,6 @@ Module Monorail
         res.status = 404
       end
     end
+
   end
 end

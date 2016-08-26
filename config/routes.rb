@@ -1,17 +1,17 @@
-require ('../lib/router.rb')
+require_relative ('../lib/router.rb')
 
 # Router#draw example:
 
-MyRouter = Router.new
+MyRouter = Monorail::Router.new
 
 MyRouter.draw do
 # Draw routes according to this example:
 
-#   get Regexp.new("^/posts$"), PostsController, :index
-#   get Regexp.new("^/posts/new$"), PostsController, :new
-#   post Regexp.new("^/posts$"), PostsController, :create
-#   get Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :show
-#   get Regexp.new("^/posts/(?<id>\\d+)/edit$"), PostsController, :edit
-#   patch Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :update
-#   delete Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :destroy
+  # get Regexp.new("^/posts$"), PostsController, :index
+  # get Regexp.new("^/posts/new$"), PostsController, :new
+  # post Regexp.new("^/posts$"), PostsController, :create
+  # get Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :show
+  # get Regexp.new("^/posts/(?<id>\\d+)/edit$"), PostsController, :edit
+  # patch Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :update
+  # delete Regexp.new("^/posts/(?<id>\\d+)$"), PostsController, :destroy
 end
