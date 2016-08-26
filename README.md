@@ -5,6 +5,10 @@ Monorail is a lightweight MVC framework inspired by Rails.
 Monorail provides you with session cookies, a base controller, ERB views, and a router to direct HTTP requests
 
 ## Getting Started
+1. Clone this repo and use `cd` to navigate to it
+2. Run `bundle install`
+3. Start a server
+4. Follow the instructions below to add Controllers, Routes, Views, and Models
 To start a Monorail project, simply clone this repo locally.
 
 ## Adding controllers
@@ -25,7 +29,7 @@ Construct routes by passing a regex, controller name, and action symbol to ``Rou
 ```ruby
 # config/routes.rb
 
-Router.draw do
+MyRouter.draw do
   get Regexp.new("^/posts$"), PostsController, :index
   get Regexp.new("^/posts/new$"), PostsController, :new
   post Regexp.new("^/posts$"), PostsController, :create
