@@ -9,8 +9,8 @@ After starting a server, you'll be able to create routes and controllers to fiel
 ## Getting Started
 1. Clone this repo and use `cd` to navigate to it
 2. Run `bundle install`
-3. Start a server by running `ruby bin/server.rb`
-4. Follow the instructions below to add Controllers, Routes, and Views.
+3. Follow the instructions below to add Controllers, Routes, and Views.
+4. Start a server by running `ruby bin/server.rb`
 
 ## Adding Controllers
 Controllers should be added to ``app/controllers`` and must inherit from ``lib/controller_base.rb``
